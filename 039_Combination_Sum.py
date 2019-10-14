@@ -1,3 +1,5 @@
+#coding=utf-8
+
 class Solution:
     def combinationSum(self, candidates, target):
         self.getcombinationSum(candidates, [], 0, target)
