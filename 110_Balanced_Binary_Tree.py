@@ -34,6 +34,7 @@ class Solution:
     def depth(self, root):
         if not root: return 0
         left = self.depth(root.left)
+        # 提前阻断
         if left == -1: return -1
         right = self.depth(root.right)
         if right == -1: return -1
