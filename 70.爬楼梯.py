@@ -35,17 +35,13 @@ class Solution:
     #         return result
 
     def climbStairs(self, n):
-        if n == 1:
-            return 1
-
-        step1 = 1
-        step2 = 2
-        for i in range(2, n):
-            temp = step2
-            step2 = step1 + step2
-            step1 = temp
-        return step2
+        prev, curr = 0, 1
+        for _ in range(n):
+            temp = curr
+            curr = curr + prev
+            prev = temp
+        return curr
 
 if __name__ == '__main__':
     s = Solution()
-    print(s.climbStairs(4))
+    print(s.climbStairs(5))
