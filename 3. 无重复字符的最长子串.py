@@ -45,5 +45,3 @@ if __name__ == '__main__':
     s = Solution()
     start = time.time()
     print(s.lengthOfLongestSubstring("abba"))
-    end = time.time()
-    print((end - start) * 1000)
