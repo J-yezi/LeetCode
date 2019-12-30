@@ -18,24 +18,50 @@ class ListNode(object):
         self.next = None
 
 class Solution:
+    '''
+    解题思路：先获取到整个链表的长度，然后获取到n-k处的node，设置为head，并且将链表尾部的next设置为以前的head
+    '''
     def rotateRight(self, head, k):
-        index = 0
-        while index
+        if not head:
+            return None
+        if not head.next:
+            return head
+
+        n = 1
+        old_tail = head
+        while old_tail.next:
+            old_tail = old_tail.next
+            n += 1
+
+        old_tail.next = head
+        k = k % n
+        
+        new_tail = head
+        for i in range(n - k - 1):
+            new_tail = new_tail.next
+        
+        new_head = new_tail.next
+        new_tail.next = None
+
+        return new_head
 
 
 
 if __name__ == "__main__":
     node1 = ListNode(1)
-    node2 = ListNode(2)
-    node3 = ListNode(3)
+    node2 = ListNode(0)
+    node3 = ListNode(2)
     node4 = ListNode(4)
     node5 = ListNode(5)
 
     node1.next = node2
     node2.next = node3
-    node3.next = node4
-    node4.next = node5
+    # node3.next = node4
+    # node4.next = node5
 
     s = Solution()
-    print(s.rotateRight(node1), 2)
+    new_head = s.rotateRight(node1, 4)
+    while new_head:
+        print(new_head.val)
+        new_head = new_head.next
 

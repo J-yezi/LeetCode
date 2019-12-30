@@ -10,8 +10,8 @@ class Quick:
 
     def quick_sort(self, left, right):
         """
-        快速排序的思想：先设定第一个元素为key，然后进行排序，左边始终小于key，右边一直大于key
-        然后采用递归，对key左边和右边的数组分别进行排序
+        快速排序的思想：先设定左边的第一个元素为key，通过交换key的位置，保证左边元素小于key，右边元素大于key
+        然后采用递归，对key左边的数组和右边的数组做一样的排序，当left等于right的时候，数组就排完了
         """
         if left >= right:
             return
