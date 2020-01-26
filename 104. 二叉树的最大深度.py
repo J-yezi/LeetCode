@@ -23,24 +23,24 @@ class TreeNode:
 
 class Solution:
     # 递归
-    # def maxDepth(self, root):
-    #     if root is None:
-    #         return 0
-    #     return max(self.maxDepth(root.left), self.maxDepth(root.right)) + 1
-
     def maxDepth(self, root):
-        stack = []
-        if root is not None:
-            stack.append((root, 1))
+        if root is None:
+            return 0
+        return max(self.maxDepth(root.left), self.maxDepth(root.right)) + 1
 
-        depth = 0
-        while stack != []:
-            root, curr_depth = stack.pop()
-            if root is not None:
-                stack.append((root.left, curr_depth + 1))
-                stack.append((root.right, curr_depth + 1))
-                depth = max(depth, curr_depth)
-        return depth
+    # def maxDepth(self, root):
+    #     stack = []
+    #     if root is not None:
+    #         stack.append((root, 1))
+
+    #     depth = 0
+    #     while stack != []:
+    #         root, curr_depth = stack.pop()
+    #         if root is not None:
+    #             stack.append((root.left, curr_depth + 1))
+    #             stack.append((root.right, curr_depth + 1))
+    #             depth = max(depth, curr_depth)
+    #     return depth
 
 if __name__ == '__main__':
     root = TreeNode(3)

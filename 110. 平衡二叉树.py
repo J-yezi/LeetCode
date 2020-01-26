@@ -23,13 +23,18 @@ class TreeNode:
         self.right = None
 
 class Solution:
-    # 递归 从顶至底（暴力法）
+    '''
+    递归 从顶至底（暴力法）
+    1、获取当前节点的左右最大深度，然后判断当前节点是否平衡
+    2、上个条件成立的情况下，在判断左右子节点是否也平衡
+    '''
     # def isBalanced(self, root):
     #     if not root: return True
     #     if abs(self.depth(root.left) - self.depth(root.right)) <= 1:
     #         return self.isBalanced(root.left) and self.isBalanced(root.right)
     #     return False
 
+    # 获取当前节点的最大深度
     # def depth(self, root):
     #     if not root: return 0
     #     return max(self.depth(root.left), self.depth(root.right)) + 1
