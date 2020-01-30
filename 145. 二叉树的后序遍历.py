@@ -45,7 +45,6 @@ class Solution(object):
             array.append(node.val)
             if node.left: stack.append(node.left)
             if node.right: stack.append(node.right)
-        print('---', array)
         return array[::-1]
 
 if __name__ == "__main__":
