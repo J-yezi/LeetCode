@@ -9,7 +9,7 @@ class Bubble:
 
     def sort(self):
         """
-        冒泡排序算法，时间复杂度O(n^2)
+        冒泡排序算法，时间复杂度O(n^2)，稳定，使用场景：n较小时
         """
         for i in range(len(self.array)):
             for j in range(i + 1, len(self.array)):

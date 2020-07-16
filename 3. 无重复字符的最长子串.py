@@ -14,12 +14,13 @@ class Solution(object):
     #     for i in range(ls):
     #         temp = 0
     #         keys.clear()
-    #         for j in range(i, ls):
-    #             if not s[j] in keys:
-    #                 keys.add(s[j])
-    #                 temp += 1
-    #             else: break
-    #         value = max(value, temp)
+    #         
+	# 	  for j in range(i, ls):
+    #         if not s[j] in keys:
+    #             keys.add(s[j])
+    #             temp += 1
+    #         else: break
+    #     value = max(value, temp)
     #     return value
 
     '''
@@ -32,16 +33,17 @@ class Solution(object):
     '''
     def lengthOfLongestSubstring(self, s):
         st = {}
-        i, ans = 0, 0
+        i, ans = -1, 0
         for j, key in enumerate(s):
             if key in st:
                 i = max(st[key], i)
-            ans = max(ans, j - i + 1)
-            st[key] = j + 1
+            # 将两个重复字符之间的长度和之前的最长字符进行比较
+            ans = max(ans, j - i)
+            st[key] = j
         return ans
 
 
 if __name__ == '__main__':
     s = Solution()
     start = time.time()
-    print(s.lengthOfLongestSubstring("abba"))
+    print(s.lengthOfLongestSubstring("abcabcbb"))

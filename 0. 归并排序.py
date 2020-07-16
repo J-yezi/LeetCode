@@ -3,9 +3,12 @@ class Merge:
         self.array = array
 
     """
+	归并排序(稳定)	O(nlogn)	O(nlogn)	O(nlogn)
+
+	归并排序比较快速排序，在空间复杂度上面要高些
     归并排序的思路：将整个数组分成左右两个，然后在继续拆分，直到数组只有一个，那么这个
     数组就可以看成是有序的数组，这个也是递归结束的条件，然后再将左右两个数组合并
-    """
+	"""
     def merge_sort(self, seq):
         if len(seq) <= 1:
             return seq

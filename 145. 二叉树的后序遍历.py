@@ -42,9 +42,10 @@ class Solution(object):
         array, stack = [], [root]
         while len(stack) > 0:
             node = stack.pop()
-            array.append(node.val)
-            if node.left: stack.append(node.left)
-            if node.right: stack.append(node.right)
+            if node:
+                array.append(node.val)
+                stack.append(node.left)
+                stack.append(node.right)
         return array[::-1]
 
 if __name__ == "__main__":

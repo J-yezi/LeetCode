@@ -17,7 +17,7 @@ class Shell:
             # 每次减小增量，直到increment = 1
             increment = int(increment / 3) + 1
             # 插入排序
-            for i in range(increment + 1, length):
+            for i in range(increment, length):
                 j = i - increment
                 while self.array[j] > self.array[j + increment] and j >= 0:
                     self.swap(j, j + increment)

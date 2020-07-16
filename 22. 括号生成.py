@@ -15,51 +15,65 @@
 
 class Solution(object):
     '''
-    递归+剪枝
+    回朔法+剪枝
     1、左括号的数量<输入的参数
     2、同时右节点的数量<输入的参数
     3、左括号的数量>右括号的数量
     '''
-    # def generateParenthesis(self, n):
-    #     ans = []
-    #     def backtrack(s = '', left = 0, right = 0):
-    #         if len(s) == 2 * n:
-    #             ans.append(s)
-    #             return
-    #         if left < n:
-    #             backtrack(s + '(', left + 1, right)
-    #         if right < left:
-    #             backtrack(s + ')', left, right + 1)
-    #     backtrack()
-    #     return ans
-
-    '''
-    动态规划
-    思路：n = (n - 1) + 1，在n-1对括号情况下，添加一对括号就行了
-    怎么添加：n-1对括号要么添加在新括号里面，或者就是添加在新括号的右侧，为什么只有右侧，()()、(())()和()(())，右侧和左侧情况是一样的
-    简化出来的公式：([0、1、2...对括号]) + [n-1、n-2、n-1-x剩余的括号]，(())() -> 里面一对括号，右侧一对括号，()(()) -> 里面0对括号，右侧两种括号，所以这里印证了右侧和左侧情况是一样的，只需要一种就行了
-    循环：剩下的就是i(新加括号里面)+j(括号右侧)=n-1对括号，分别对i=0,j=n-1，的情况进行循环处理，然后对i=1,j=n-2的情况进行循环处理...依次类推
-    '''
     def generateParenthesis(self, n):
-        if n == 0: return []
-        total = []
-        total.append([None])
-        total.append(['()'])
-        for i in range(2,n + 1):
-            l = []
-            for j in range(i):
-                list1 = total[j]
-                list2 = total[i - 1 - j]
-                for k1 in list1:
-                    for k2 in list2:
-                        if k1 is None:
-                            k1 = ''
-                        if k2 is None:
-                            k2 = ''
-                        l.append('(' + k1 + ')' + k2)
-            total.append(l)
-        return total[n]     
+        ans = []
+        def backtrack(s = '', left = 0, right = 0):
+            # 递归出口
+            if len(s) == 2 * n:
+                ans.append(s)
+                return
+            # 其实两个if就是在剪枝，右括号需要比左括号少才能放置右括号
+            if left < n:
+                """
+                这里并没有像下面的方法进行回溯，主要是因为我传入的s是一个字符串，每次递归还原之后，方法的调用栈也会还原
+                下面使用数组，所以整个过程中，都是使用一个引用
+                但是方法栈还原后，s就会变成未添加最后一个括号的情况，相当于是进行了回溯
+                """
+                backtrack(s + '(', left + 1, right)
+            if right < left:
+                backtrack(s + ')', left, right + 1)
+        backtrack()
+        return ans
+
+    """
+    回朔法
+    """
+    # def generateParenthesis(self, n: int) -> [str]:
+    #     def generate(A):
+    #         if len(A) == 2*n:
+    #             if valid(A):
+    #                 ans.append("".join(A))
+    #         else:
+    #             # 当前位置，我先左括号的添加，然后探索剩下的解，然后进行回溯，将当前位置变成右括号，然后进行探索，最后又进行回溯，这样就能够找出所有括号的解
+    #             A.append('(')
+    #             # 当前位置添加左括号，然后在继续探索接下来的解
+    #             generate(A)
+    #             # 当前位置可以是右括号，所以需要进行回溯
+    #             A.pop()
+    #             A.append(')')
+    #             # 添加右括号，然后继续探索接下来的解
+    #             generate(A)
+    #             # 然后又进行回溯
+    #             A.pop()
+
+    #     def valid(A):
+    #         bal = 0
+    #         for c in A:
+    #             if c == '(': bal += 1
+    #             else: bal -= 1
+    #             if bal < 0: return False
+    #         return bal == 0
+
+    #     ans = []
+    #     generate([])
+    #     return ans
 
 if __name__ == "__main__":
     s = Solution()
-    print(s.generateParenthesis(3))
+    arr = s.generateParenthesis(3)
+    print(arr, len(arr))
