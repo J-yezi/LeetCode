@@ -12,20 +12,34 @@
 """
 
 class Solution(object):
+    """
+    双指针法
+    """
     def removeDuplicates(self, nums):
         if len(nums) <= 1:
             return len(nums)
+
+        i = 0
+        for j in range(len(nums)):
+            if nums[i] != nums[j]:
+                i += 1
+                nums[i] = nums[j]
+        return i + 1
+
+    # def removeDuplicates(self, nums):
+    #     if len(nums) <= 1:
+    #         return len(nums)
         
-        index = 1
-        curr = nums[0]
-        while len(nums) > index:
-            if nums[index] == curr:
-                nums.remove(curr)
-            else:
-                curr = nums[index]
-                index += 1
-        return len(nums)
+    #     index = 1
+    #     curr = nums[0]
+    #     while len(nums) > index:
+    #         if nums[index] == curr:
+    #             nums.remove(curr)
+    #         else:
+    #             curr = nums[index]
+    #             index += 1
+    #     return len(nums)
 
 if __name__ == "__main__":
     s = Solution()
-    print(s.removeDuplicates([]))
+    print(s.removeDuplicates([0,0,1,1,1,2,2,3,3,4]))
