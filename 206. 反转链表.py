@@ -1,4 +1,4 @@
-#coding=utf-8
+# coding=utf-8
 
 '''
 反转一个单链表。
@@ -11,28 +11,42 @@
 你可以迭代或递归地反转链表。你能否用两种方法解决这道题？
 '''
 
+
 class ListNode(object):
     def __init__(self, x):
         self.val = x
         self.next = None
 
-class Solution:
-    # 迭代法
-    # def reverseList(self, head):
-    #     temp = None
-    #     while head is not None:
-    #         curr = head
-    #         head = head.next
-    #         curr.next = temp
-    #         temp = curr
-    #     return temp
 
-    def reverseList(self, head):
-        if head is None or head.next is None: return head
-        cur = self.reverseList(head.next)
+class Solution:
+    """
+    迭代法
+    """
+    def reverseList1(self, head):
+        prev = None
+        while head:
+            curr = head
+            head = head.next
+            curr.next = prev
+            prev = curr
+        return prev
+
+    """
+    递归法
+    利用递归来实现向后的指针，递归中的回溯可以帮助我们模拟一个指针从第nn个结点向中心移动的移动过程
+    """
+    def reverseList2(self, head):
+        if head.next is None:
+            return head
+
+        # 其实递归回来每次返回的都是最后一个节点，也就是反转链表的新节点
+        cur = self.reverseList2(head.next)
+        # head的下一个节点，指向head
         head.next.next = head
+        # 取消head之前指向下一个节点的关系
         head.next = None
         return cur
+
 
 if __name__ == "__main__":
     node1 = ListNode(1)
@@ -40,14 +54,14 @@ if __name__ == "__main__":
     node3 = ListNode(3)
     node4 = ListNode(4)
     node5 = ListNode(5)
-    
+
     node1.next = node2
     node2.next = node3
     node3.next = node4
     node4.next = node5
 
     s = Solution()
-    head = s.reverseList(node1)
+    head = s.reverseList2(node1)
     while head is not None:
         print(head.val)
         head = head.next

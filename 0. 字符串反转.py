@@ -1,4 +1,4 @@
-#coding=utf-8
+# coding=utf-8
 
 def reverse(str):
 	if len(str) == 1:
