@@ -5,6 +5,11 @@
 '''
 
 
+"""
+位运算
+以下是二进制表示
+1=0001 2=0010 4=
+"""
 class Solution:
     def isPowerOfTwo(self, n):
         return n > 0 and (n & n - 1) == 0

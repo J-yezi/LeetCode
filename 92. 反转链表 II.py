@@ -27,7 +27,7 @@ class Solution:
     因为递归特性，right会向左移动，那么需要自己设置left向右移动
     直到left和right相等，或者left在right的右边
     """
-    def reverseBetween(self, head, m, n):
+    def reverseBetween1(self, head, m, n):
         if not head:
             return None
 
@@ -64,6 +64,37 @@ class Solution:
         recurseAndReverse(right, m, n)
         return head
 
+    def reverseBetween2(self, head, m, n):
+        if not head:
+            return None
+
+        cur, prev = head, None
+        while m > 1:
+            prev = cur
+            cur = cur.next
+            m, n = m - 1, n - 1
+
+        # tail指向m的节点，con指向m节点的上一个节点
+        tail, con = cur, prev
+        # 从m到n的所有节点反转，prev指向n节点，cur指向n节点的下一个节点
+        while n:
+            third = cur.next
+            cur.next = prev
+            prev = cur
+            cur = third
+            n -= 1
+
+        if con:
+            # m节点的上一个节点就需要和反转后的链表head进行拼接
+            con.next = prev
+        else:
+            # 有可能是直接从第一个节点就就开始反转
+            head = prev
+
+        # tail需要和n节点后的节点进行拼接
+        tail.next = cur
+        return head
+
 
 if __name__ == "__main__":
     node1 = ListNode(1)
@@ -76,7 +107,7 @@ if __name__ == "__main__":
     node3.next = node4
 
     s = Solution()
-    head = s.reverseBetween(node1, 2, 3)
+    head = s.reverseBetween1(node1, 2, 3)
 
     while head:
         print(head.val)

@@ -47,6 +47,31 @@ class Solution:
         head.next = None
         return cur
 
+    """
+    替换节点值
+    先递归让right指向链表的尾部，然后利用递归的回溯，right指针逐渐往左移动
+    让给left指针向右移动，然后逐渐和right指向的值进行交换
+    """
+    def reverseList3(self, head):
+        left, right = head, head
+        stop = False
+
+        def reverse(right):
+            nonlocal left, stop
+            if right is None:
+                return right
+
+            reverse(right.next)
+            if left == right or right.next == left:
+                stop = True
+
+            if not stop:
+                left.val, right.val = right.val, left.val
+                left = left.next
+
+        reverse(right)
+        return head
+
 
 if __name__ == "__main__":
     node1 = ListNode(1)
@@ -61,7 +86,7 @@ if __name__ == "__main__":
     node4.next = node5
 
     s = Solution()
-    head = s.reverseList2(node1)
+    head = s.reverseList3(node1)
     while head is not None:
         print(head.val)
         head = head.next
