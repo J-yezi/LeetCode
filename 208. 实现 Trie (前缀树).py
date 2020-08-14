@@ -29,7 +29,8 @@ T9 (九宫格)打字预测
 按词典序枚举字符串的数据集。
 
 Trie 树优于哈希表的另一个理由是，随着哈希表大小增加，会出现大量的冲突，时间复杂度可能增加到 O(n)O(n)
-其中 nn 是插入的键的数量。与哈希表相比，Trie 树在存储多个具有相同前缀的键时可以使用较少的空间。此时 Trie 树只需要 O(m)O(m) 的时间复杂度，其中 mm 为键长。而在平衡树中查找键值需要 O(m \log n)O(mlogn) 时间复杂度。
+其中 nn 是插入的键的数量。与哈希表相比，Trie 树在存储多个具有相同前缀的键时可以使用较少的空间
+此时 Trie 树只需要 O(m)O(m) 的时间复杂度，其中 mm 为键长。而在平衡树中查找键值需要 O(m log n)O(mlogn) 时间复杂度。
 
 查找 Trie 树中的键前缀
 时间复杂度 : O(m)O(m)。
@@ -38,19 +39,21 @@ Trie 树优于哈希表的另一个理由是，随着哈希表大小增加，会
 
 '''
 思路:
-TrieNode是一个节点，里面包含了一个数组
-数组是根据字母的ASCII码的位置添加和字母相对应的下一个节点
+TrieNode是一个节点，里面包含了一个长度26的数组，里面是初始数组都是None
+利用字母的ascii码，将当前插入的字符放在数组的对应位置
+对于下一个字符就将放置到上一个节点的数组对应位置
+如果是最后一个字符，那么当前节点的isEnd为true，并且数组中没有一个节点
 '''
 
 
-class TrieNode(object):
+class TrieNode:
     def __init__(self):
         self.links = [None] * 26
         self.isEnd = False
 
     def containsKey(self, ch):
         # 转换为ASCII码进行计算
-        if not self.links[ord(ch) - ord('a')]:
+        if self.links[ord(ch) - ord('a')]:
             return True
         return False
 
@@ -64,7 +67,7 @@ class TrieNode(object):
         self.isEnd = True
 
 
-class Trie(object):
+class Trie:
     def __init__(self):
         self.root = TrieNode()
 
@@ -72,7 +75,7 @@ class Trie(object):
         node = self.root
         for i in range(len(word)):
             ch = word[i]
-            if node.containsKey(ch) is False:
+            if not node.containsKey(ch):
                 node.put(ch, TrieNode())
             node = node.get(ch)
         node.setEnd()
@@ -89,11 +92,11 @@ class Trie(object):
 
     def search(self, word):
         node = self.searchPrefix(word)
-        return node is not None and node.isEnd
+        return node and node.isEnd
 
     def startsWith(self, prefix):
         node = self.searchPrefix(prefix)
-        return node is not None
+        return node
 
 
 if __name__ == "__main__":
