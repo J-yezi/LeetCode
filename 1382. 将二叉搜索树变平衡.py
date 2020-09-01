@@ -28,14 +28,22 @@ class Solution(object):
             if o.right:
                 getInorder(o.right)
 
-        # 就是普通的构建二叉搜索树
+        """
+        递归
+        首先获取数组最中间的元素，创建对应的节点
+        然后给该节点的左子树赋值，o.left = build(left, mid - 1)
+        然后给该节点的左右子树赋值，o.left = build(mid - 1, right)
+
+        那么需要思考的问题：什么时候递归结束？
+        当left=mid或者right=mid，那么递归就结束了
+        """
         def build(left, right):
             # //是整数的除法
             mid = (left + right) // 2
             o = TreeNode(inorderSeq[mid])
-            if left <= mid - 1:
+            if left < mid:
                 o.left = build(left, mid - 1)
-            if mid + 1 <= right:
+            if mid < right:
                 o.right = build(mid + 1, right)
             return o
 
