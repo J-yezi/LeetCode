@@ -7,6 +7,9 @@
 """
 
 
+from collections import deque
+
+
 class TreeNode(object):
     def __init__(self, x):
         self.val = x
@@ -15,7 +18,16 @@ class TreeNode(object):
 
 
 class Solution(object):
-    def binaryTreePaths(self, root):
+    """
+    递归
+    思路是可以拆分成当前节点到根节点的路径是path，然后加上当前节点到叶子节点的路径
+    1、判断node是否为空
+    2、添加当前节点的值到path上面
+    3、如果当前节点是叶子节点，那么路径就算完成了
+    4、如果不是叶子节点，那么就就在路径上追加->
+    5、当前节点非叶子节点，那么接着访问该节点的左子节点和右子节点
+    """
+    def binaryTreePaths1(self, root):
         paths = []
 
         def recurse(node, path):
@@ -31,6 +43,33 @@ class Solution(object):
         recurse(root, '')
         return paths
 
+    def binaryTreePaths2(self, root):
+        if not root:
+            return []
+
+        paths = []
+        nodes = deque([root])
+        vals = deque([''])
+
+        while nodes:
+            node = nodes.popleft()
+            path = vals.popleft()
+
+            path += str(node.val)
+            print("---", path)
+            if not node.left and not node.right:
+                paths.append(path)
+                continue
+
+            path += '->'
+            if node.left:
+                nodes.append(node.left)
+                vals.append(path)
+            if node.right:
+                nodes.append(node.right)
+                vals.append(path)
+        return paths
+
 
 if __name__ == "__main__":
     node1 = TreeNode(1)
@@ -43,5 +82,5 @@ if __name__ == "__main__":
     node2.right = node4
 
     s = Solution()
-    ans = s.binaryTreePaths(node1)
+    ans = s.binaryTreePaths2(node1)
     print(ans)

@@ -11,7 +11,7 @@
             4   8
            /   / \
           11  13  4
-         /  \      \
+         /   \     \
         7    2      1
 返回 true, 因为存在目标和为 22 的根节点到叶子节点的路径 5->4->11->2。
 """
@@ -28,6 +28,11 @@ class TreeNode(object):
 
 
 class Solution(object):
+    """
+    广度优先搜索
+    从根节点入栈开始
+    每次弹出一个节点，然后将当前节点的左右子节点入栈
+    """
     def hasPathSum1(self, root, sum):
         if not root:
             return False

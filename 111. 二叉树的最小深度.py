@@ -1,5 +1,3 @@
-#coding=utf-8
-
 '''
 给定一个二叉树，找出其最小深度。
 最小深度是从根节点到最近叶子节点的最短路径上的节点数量。
@@ -15,11 +13,13 @@
 返回它的最小深度  2.
 '''
 
+
 class TreeNode(object):
     def __init__(self, x):
         self.val = x
         self.left = None
         self.right = None
+
 
 class Solution:
     def minDepth(self, root):
@@ -30,6 +30,7 @@ class Solution:
         if left != 0 and right != 0:
             return min(left, right) + 1
         return left + right + 1
+
 
 if __name__ == '__main__':
     s = Solution()

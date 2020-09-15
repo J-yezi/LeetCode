@@ -22,6 +22,9 @@
 """
 
 
+from collections import deque
+
+
 class TreeNode(object):
     def __init__(self, x):
         self.val = x
@@ -30,9 +33,55 @@ class TreeNode(object):
 
 
 class Solution(object):
-    def pathSum(self, root, sum):
-        pass
+    def pathSum1(self, root, sum):
+        if not root:
+            return []
+
+        nodes = deque([root])
+        vals = deque([[]])
+        paths = []
+
+        while nodes:
+            node = nodes.popleft()
+            path = vals.popleft()
+
+            path.append(node.val)
+            if not node.left and not node.right:
+                count = 0
+                for i in range(len(path)):
+                    count += path[i]
+                if count == sum:
+                    paths.append(path)
+                continue
+
+            if node.left:
+                nodes.append(node.left)
+                vals.append(path[:])
+            if node.right:
+                nodes.append(node.right)
+                vals.append(path[:])
+        return paths
 
 
 if __name__ == "__main__":
-    pass
+    node1 = TreeNode(5)
+    node2 = TreeNode(4)
+    node3 = TreeNode(8)
+    node4 = TreeNode(11)
+    node5 = TreeNode(13)
+    node6 = TreeNode(4)
+    node7 = TreeNode(7)
+    node8 = TreeNode(2)
+    node9 = TreeNode(1)
+
+    node1.left = node2
+    node1.right = node3
+    node2.left = node4
+    node3.left = node5
+    node3.right = node6
+    node4.left = node7
+    node4.right = node8
+    node6.right = node9
+
+    s = Solution()
+    print(s.pathSum1(node1, 22))
