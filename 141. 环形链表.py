@@ -20,7 +20,7 @@ class ListNode:
 class Solution:
     """
     哈希表
-    判断当前指针是否在表中，如果有，那么久表示存在环
+    判断当前指针是否在表中，如果有，那么就表示存在环
     """
     def hasCycle1(self, head):
         dic = {}

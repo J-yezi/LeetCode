@@ -1,11 +1,10 @@
-#coding=utf-8
-
 '''
 给定一个整数，写一个函数来判断它是否是 3 的幂次方。
 
 进阶：
 你能不使用循环或者递归来完成本题吗？
 '''
+
 
 class Solution:
     # 暴力法
@@ -21,13 +20,16 @@ class Solution:
 
     # 递归
     def isPowerOfThree(self, n):
-        if n == 0: return False
-        elif n == 1: return True
+        if n == 0:
+            return False
+        elif n == 1:
+            return True
         else:
             if n % 3 == 0:
                 return self.isPowerOfThree(n / 3)
             else:
                 return False
+
 
 if __name__ == "__main__":
     s = Solution()

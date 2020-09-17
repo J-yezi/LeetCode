@@ -73,11 +73,13 @@ class Trie:
 
     def insert(self, word):
         node = self.root
+        print("--------")
         for i in range(len(word)):
             ch = word[i]
             if not node.containsKey(ch):
                 node.put(ch, TrieNode())
             node = node.get(ch)
+            print(node.isEnd)
         node.setEnd()
 
     def searchPrefix(self, word):
@@ -101,5 +103,6 @@ class Trie:
 
 if __name__ == "__main__":
     t = Trie()
+    t.insert('app')
     t.insert('apple')
     print(t.search('apple'))

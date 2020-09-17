@@ -56,7 +56,6 @@ class Solution(object):
             path = vals.popleft()
 
             path += str(node.val)
-            print("---", path)
             if not node.left and not node.right:
                 paths.append(path)
                 continue
