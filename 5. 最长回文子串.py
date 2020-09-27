@@ -1,8 +1,7 @@
-#coding=utf-8
-
 '''
 给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000
 '''
+
 
 class Solution:
     """
@@ -11,7 +10,8 @@ class Solution:
     存在奇数的字符串和偶数的字符串，所以我们需要从一个字符开始扩展，或者从两个字符之间开始扩展，所以总共有n+n-1个中心
     """
     def longestPalindrome(self, s):
-        if (s == None or len(s) < 1): return ''
+        if (not s or len(s) < 1):
+            return ''
         start, end = 0, 0
         for i in range(len(s)):
             left1, right1 = self.expandAroundCenter(s, i, i)
@@ -31,6 +31,7 @@ class Solution:
             left -= 1
             right += 1
         return (left + 1, right - 1)
+
 
 if __name__ == "__main__":
     s = Solution()
