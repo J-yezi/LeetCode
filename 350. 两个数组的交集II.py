@@ -1,25 +1,19 @@
-#coding=utf-8
+'''
+给定两个数组，编写一个函数来计算它们的交集。
+示例 1：
+
+输入：nums1 = [1,2,2,1], nums2 = [2,2]
+输出：[2,2]
+示例 2:
+
+输入：nums1 = [4,9,5], nums2 = [9,4,9,8,4]
+输出：[4,9]
+'''
+
 
 class Solution:
-    # def intersect(self, nums1, nums2):
-    #     dic = {}
-    #     for i in nums1:
-    #         try:
-    #             dic[i] += 1
-    #         except:
-    #             dic[i] = 1
-
-    #     arr = []
-    #     for i in nums2:
-    #         try:
-    #             if dic[i] > 0:
-    #                 dic[i] -= 1
-    #                 arr.append(i)
-    #         except: pass
-    #     return arr
-
-    # 双指针方法 
-    def intersect(self, nums1, nums2):
+    # 双指针方法
+    def intersect1(self, nums1, nums2):
         nums1.sort()
         nums2.sort()
         p1 = 0
@@ -37,6 +31,7 @@ class Solution:
                 p2 += 1
         return arr
 
+
 if __name__ == "__main__":
     s = Solution()
-    print(s.intersect([4,9,5], [9,4,9,8,4]))
+    print(s.intersect([4, 9, 5], [9, 4, 9, 8, 4]))

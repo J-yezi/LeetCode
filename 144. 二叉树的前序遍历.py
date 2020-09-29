@@ -1,5 +1,3 @@
-#coding=utf-8
-
 '''
 给定一个二叉树，返回它的 前序 遍历。
 示例:
@@ -14,30 +12,28 @@
 进阶: 递归算法很简单，你可以通过迭代算法完成吗？
 '''
 
+
 class TreeNode(object):
     def __init__(self, x):
         self.val = x
         self.left = None
         self.right = None
 
+
 class Solution(object):
-    '''
-    递归
-    '''
-    # def preorderTraversal(self, root):
-    #     array = []
-    #     self.__prev__(root, array)
-    #     return array
+    # 递归
+    def preorderTraversal1(self, root):
+        array = []
 
-    # def __prev__(self, node, array):
-    #     if not node: return
-    #     array.append(node.val)
-    #     self.__prev__(node.left, array)
-    #     self.__prev__(node.right, array)
+        def recurse(node, array):
+            if not node:
+                return
+            array.append(node.val)
+            recurse(node.left, array)
+            recurse(node.right, array)
+        return array
 
-    '''
-    迭代
-    '''
+    # 迭代
     def preorderTraversal(self, root):
         array, stack = [], [root]
         while len(stack) > 0:
@@ -47,6 +43,7 @@ class Solution(object):
                 stack.append(node.right)
                 stack.append(node.left)
         return array
+
 
 if __name__ == "__main__":
     node1 = TreeNode(1)
