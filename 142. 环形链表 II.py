@@ -15,16 +15,15 @@ class ListNode:
 
 class Solution:
     def detectCycle(self, head):
-        try:
-            fast = head.next.next
-            slow = head.next
-            while fast != slow:
-                fast = fast.next.next
-                slow = slow.next
-            return fast
-        except Exception as e:
-            _ = e
-            return None
+        dic = {}
+        pos = 0
+        while head:
+            if head in dic.keys():
+                return head
+            dic[head] = pos
+            pos += 1
+            head = head.next
+        return None
 
 
 if __name__ == "__main__":
@@ -39,4 +38,4 @@ if __name__ == "__main__":
     node4.next = node2
 
     s = Solution()
-    print(s.detectCycle(node1).val)
+    print(s.detectCycle(node1))

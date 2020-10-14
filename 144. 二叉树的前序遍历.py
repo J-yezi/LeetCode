@@ -36,7 +36,7 @@ class Solution(object):
     # 迭代
     def preorderTraversal(self, root):
         array, stack = [], [root]
-        while len(stack) > 0:
+        while stack:
             node = stack.pop()
             if node:
                 array.append(node.val)

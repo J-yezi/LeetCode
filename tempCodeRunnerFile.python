@@ -1,0 +1,4 @@
+a = 1
+def b(a):
+    a = 2
+print(&a)

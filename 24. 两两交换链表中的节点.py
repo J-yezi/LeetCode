@@ -19,23 +19,23 @@ class Solution(object):
     """
     迭代
     """
-    # def swapPairs(self, head):
-    #     if head is None or head.next is None:
-    #         return head
+    def swapPairs1(self, head):
+        if head is None or head.next is None:
+            return head
 
-    #     new = ListNode(0)
-    #     prev = new
-    #     while head and head.next:
-    #         next = head.next.next
+        new = ListNode(0)
+        prev = new
+        while head and head.next:
+            next = head.next.next
 
-    #         prev.next = head.next
-    #         prev.next.next = head
+            prev.next = head.next
+            prev.next.next = head
 
-    #         head = next
-    #         prev = prev.next.next
-    #         prev.next = None
-    #     prev.next = head
-    #     return new.next
+            head = next
+            prev = prev.next.next
+            prev.next = None
+        prev.next = head
+        return new.next
 
     def swapPairs(self, head):
         if not head or not head.next:

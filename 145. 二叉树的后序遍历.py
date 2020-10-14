@@ -44,6 +44,7 @@ class Solution(object):
                 array.append(node.val)
                 stack.append(node.left)
                 stack.append(node.right)
+        print(array)
         return array[::-1]
 
 
@@ -51,8 +52,8 @@ if __name__ == "__main__":
     node1 = TreeNode(1)
     node2 = TreeNode(2)
     node3 = TreeNode(3)
-    node1.right = node2
-    node2.left = node3
+    node2.left = node1
+    node2.right = node3
 
     s = Solution()
-    print(s.postorderTraversal(node1))
+    print(s.postorderTraversal1(node2))
