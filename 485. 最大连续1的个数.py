@@ -1,5 +1,3 @@
-#coding=utf-8
-
 '''
 给定一个二进制数组， 计算其中最大连续1的个数。
 
@@ -13,6 +11,7 @@
 输入数组的长度是正整数，且不超过 10,000。
 '''
 
+
 class Solution:
     def findMaxConsecutiveOnes(self, nums):
         total, count = 0, 0
@@ -25,6 +24,7 @@ class Solution:
         total = max(total, count)
         return total
 
+
 if __name__ == "__main__":
     s = Solution()
-    print(s.findMaxConsecutiveOnes([1,1,0,1,1,1]))
+    print(s.findMaxConsecutiveOnes([1, 1, 0, 1, 1, 1]))
