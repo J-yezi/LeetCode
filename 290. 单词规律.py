@@ -1,5 +1,3 @@
-#coding=utf-8
-
 '''
 给定一种规律 pattern 和一个字符串 str ，判断 str 是否遵循相同的规律。
 
@@ -14,28 +12,33 @@
 输出: false
 '''
 
+
 class Solution:
     '''
     普通方法，将映射关系保存在字典中，然后进行比较
     '''
     def wordPattern(self, pattern, str):
-        dic, arr= {}, str.split(' ')
-        if len(arr) != len(pattern): return False
+        dic, arr = {}, str.split(' ')
+        if len(arr) != len(pattern):
+            return False
 
         for i, s in enumerate(pattern):
-            try:
-                if dic[s] != arr[i]: return False
-            except:
+            if s in dic.keys():
+                if dic[s] != arr[i]:
+                    return False
+            else:
                 dic[s] = arr[i]
 
         dic = {}
         for i, s in enumerate(arr):
-            try:
-                if dic[s] != pattern[i]: return False
-            except:
+            if s in dic.keys():
+                if dic[s] != pattern[i]:
+                    return False
+            else:
                 dic[s] = pattern[i]
-        
+
         return True
+
 
 if __name__ == "__main__":
     s = Solution()

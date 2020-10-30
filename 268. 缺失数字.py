@@ -1,5 +1,3 @@
-#coding=utf-8
-
 """
 给定一个包含 0, 1, 2, ..., n 中 n 个数的序列，找出 0 .. n 中没有出现在序列中的那个数
 
@@ -7,6 +5,7 @@
 输入: [3,0,1]
 输出: 2
 """
+
 
 class Solution:
     """
@@ -19,7 +18,7 @@ class Solution:
     #     for i in range(len(nums_set) + 1):
     #         if i not in nums_set:
     #             return i
-    #     return None 
+    #     return None
 
     """
     位运算
@@ -39,9 +38,10 @@ class Solution:
     def missingNumber(self, nums):
         experct = sum([n for n in range(len(nums) + 1)])
         actual = 0
-        for num in nums: 
+        for num in nums:
             actual += num
         return experct - actual
+
 
 if __name__ == "__main__":
     s = Solution()

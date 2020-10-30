@@ -1,5 +1,3 @@
-#coding=utf-8
-
 """
 给定一个整数数组  nums，求出数组从索引 i 到 j  (i ≤ j) 范围内元素的总和，包含 i,  j 两点。
 
@@ -13,6 +11,7 @@ sumRange(0, 5) -> -3
 你可以假设数组不可变。
 会多次调用 sumRange 方法。
 """
+
 
 class Solution:
     # 超出时间限制
@@ -38,6 +37,7 @@ class Solution:
 
     def sumRange(self, i, j):
         return self.helper[j] - (0 if i == 0 else self.helper[i - 1])
+
 
 if __name__ == "__main__":
     s = Solution([-2, 0, 3, -5, 2, -1])

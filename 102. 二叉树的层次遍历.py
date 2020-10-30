@@ -1,5 +1,3 @@
-#coding=utf-8
-
 '''
 给定一个二叉树，返回其按层次遍历的节点值。 （即逐层地，从左到右访问所有节点）。
 例如:
@@ -18,11 +16,13 @@
 ]
 '''
 
+
 class TreeNode(object):
     def __init__(self, x):
         self.val = x
         self.left = None
         self.right = None
+
 
 class Solution(object):
     '''
@@ -32,7 +32,8 @@ class Solution(object):
     '''
     def levelOrder(self, root):
         levels = []
-        if not root: return levels
+        if not root:
+            return levels
 
         def helper(node, level):
             # 保证有几层，levels里面就有几个数组
@@ -63,7 +64,6 @@ class Solution(object):
     #         array.append(temp_array)
     #     return array
 
-    
 
 if __name__ == "__main__":
     node1 = TreeNode(3)

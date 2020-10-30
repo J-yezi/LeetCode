@@ -1,10 +1,9 @@
-#coding=utf-8
-
 '''
 给定一个正整数 num，编写一个函数，如果 num 是一个完全平方数，则返回 True，否则返回 False。
 
 说明：不要使用任何内置的库函数，如  sqrt，完全平方数保证了平方后也是整数
 '''
+
 
 class Solution:
     # 暴力法
@@ -12,7 +11,7 @@ class Solution:
     #     i = 1
     #     while i * i < num:
     #         i += 1
-    #     return i * i == num 
+    #     return i * i == num
 
     # 二分查找
     # def isPerfectSquare(self, num):
@@ -35,6 +34,7 @@ class Solution:
             num -= i
             i += 2
         return num == 0
+
 
 if __name__ == "__main__":
     s = Solution()

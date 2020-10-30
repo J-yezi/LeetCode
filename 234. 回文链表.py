@@ -1,5 +1,3 @@
-#coding=utf-8
-
 '''
 请判断一个链表是否为回文链表。
 
@@ -15,10 +13,12 @@
 你能否用 O(n) 时间复杂度和 O(1) 空间复杂度解决此题？
 '''
 
+
 class ListNode(object):
     def __init__(self, x):
         self.val = x
         self.next = None
+
 
 class Solution:
     # 普通解法，将链表转换成数组，然后两头进行比较
@@ -27,7 +27,7 @@ class Solution:
     #     while head is not None:
     #         arr.append(head.val)
     #         head = head.next
-        
+
     #     h, e = 0, len(arr) - 1
     #     while h < e:
     #         if arr[h] != arr[e]:
@@ -51,7 +51,7 @@ class Solution:
             pre.next = prepre
             prepre = pre
 
-        # 链表的长度是个奇数   
+        # 链表的长度是个奇数
         if fast:
             slow = slow.next
 
@@ -61,7 +61,7 @@ class Solution:
             slow = slow.next
             pre = pre.next
         return True
-            
+
 
 if __name__ == "__main__":
     node1 = ListNode(1)

@@ -30,10 +30,6 @@ class Solution(object):
         return i == len(name)
 
 
-# "vtkgn"
-# "vttkgnn"
-# "pyplrz"
-# "ppyypllr"
 if __name__ == "__main__":
     s = Solution()
     print(s.isLongPressedName('alex', 'alexxr'))

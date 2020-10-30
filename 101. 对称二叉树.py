@@ -1,10 +1,9 @@
-#coding=utf-8
-
 class TreeNode(object):
     def __init__(self, x):
         self.val = x
         self.left = None
         self.right = None
+
 
 class Solution(object):
     '''
@@ -23,12 +22,15 @@ class Solution(object):
     # def isMirror(self, left, right):
     #     if left is None and right is None: return True
     #     if left is None or right is None: return False
-    #     return (left.val == right.val) and self.isMirror(left.right, right.left) and self.isMirror(left.left, right.right)
+    #     return (left.val == right.val) and
+    # self.isMirror(left.right, right.left)
+    # and self.isMirror(left.left, right.right)
 
     '''
     迭代
     解题思路：每次入栈的都是成对的，并且需要进行比较值是否相等
-    然后入栈的就是(左子树的左节点，右子树的右节点)，(左子树的右节点，右子树的左节点)，并且分别以这两个节点作为新的镜像比较
+    然后入栈的就是(左子树的左节点，右子树的右节点)，(左子树的右节点，右子树的左节点)，
+    并且分别以这两个节点作为新的镜像比较
     相当于将很大的一棵树逐渐拆分成一小块进行比较
     '''
     def isSymmetric(self, root):
@@ -50,6 +52,7 @@ class Solution(object):
             stack.append(left.right)
             stack.append(right.left)
         return True
+
 
 if __name__ == "__main__":
     node1 = TreeNode(1)

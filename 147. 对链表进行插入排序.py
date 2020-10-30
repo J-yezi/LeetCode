@@ -1,5 +1,3 @@
-#coding=utf-8
-
 '''
 插入排序算法：
 插入排序是迭代的，每次只移动一个元素，直到所有元素可以形成一个有序的输出列表。
@@ -11,14 +9,17 @@
 输出: 1->2->3->4
 '''
 
+
 class ListNode(object):
     def __init__(self, x):
         self.val = x
         self.next = None
 
+
 class Solution(object):
     def insertionSortList(self, head):
-        if head is None: return None
+        if head is None:
+            return None
         helper = ListNode(-1000)
         pre, curr = helper, head
 
@@ -63,7 +64,7 @@ class Solution(object):
     # def __remove(self, prev, curr):
     #     prev.next = curr.next
     #     return prev
-    
+
     # def __insert_head(self, head, prev, curr):
     #     if prev:
     #         curr.next = prev.next
@@ -72,6 +73,7 @@ class Solution(object):
     #     else:
     #         curr.next = head
     #         return curr
+
 
 if __name__ == "__main__":
     node1 = ListNode(-1)
@@ -89,3 +91,4 @@ if __name__ == "__main__":
     while head:
         print(head.val)
         head = head.next
+

@@ -1,5 +1,3 @@
-#coding=utf-8
-
 '''
 给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。
 说明：
@@ -9,6 +7,7 @@
 输入: [2,2,1]
 输出: 1
 '''
+
 
 class Solution:
     # 普通方式
@@ -31,7 +30,8 @@ class Solution:
         for i in nums:
             # 异或，相同位0，不同位1
             a ^= i
-        return a 
+        return a
+
 
 if __name__ == "__main__":
     s = Solution()

@@ -1,5 +1,3 @@
-#coding=utf-8
-
 '''
 我们正在玩一个猜数字游戏。 游戏规则如下：
 我从 1 到 n 选择一个数字。 你需要猜我选择了哪个数字。
@@ -11,8 +9,10 @@
  0 : 恭喜！你猜对了！
 '''
 
+
 def guess(i):
     return -1
+
 
 class Solution:
     def guessNumber(self, n):
@@ -29,5 +29,7 @@ class Solution:
                 high = mid - 1
         return None
 
+
 if __name__ == "__main__":
     s = Solution()
+

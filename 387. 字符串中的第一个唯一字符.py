@@ -1,16 +1,14 @@
-#coding=utf-8
-
 class Solution:
     def firstUniqChar(self, s):
         dic = {}
         for i in range(len(s)):
-            try:
+            if s[i] in dic.keys():
                 (index, count) = dic[s[i]]
                 count += 1
                 dic[s[i]] = (index, count)
-            except:
+            else:
                 dic[s[i]] = (i, 1)
-        
+
         i = -1
         for key in dic.keys():
             (index, count) = dic[key]
@@ -20,6 +18,7 @@ class Solution:
                 else:
                     i = min(i, index)
         return i
+
 
 if __name__ == "__main__":
     s = Solution()

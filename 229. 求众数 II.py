@@ -1,5 +1,3 @@
-#coding=utf-8
-
 '''
 给定一个大小为 n 的数组，找出其中所有出现超过 ⌊ n/3 ⌋ 次的元素。
 说明: 要求算法的时间复杂度为 O(n)，空间复杂度为 O(1)。
@@ -12,6 +10,7 @@
 输入: [1,1,1,3,3,2,2,2]
 输出: [1,2]
 '''
+
 
 class Solution:
     '''
@@ -41,14 +40,14 @@ class Solution:
                 continue
             countA -= 1
             countB -= 1
-        
+
         countA, countB = 0, 0
         for i in nums:
             if i == candidateA:
                 countA += 1
             elif i == candidateB:
                 countB += 1
-        
+
         res = []
         if countA > len(nums) / 3:
             res.append(candidateA)
@@ -56,6 +55,7 @@ class Solution:
             res.append(candidateB)
         return res
 
+
 if __name__ == "__main__":
     s = Solution()
-    print(s.majorityElement([1,1,1,3,3,2,2,2]))
+    print(s.majorityElement([1, 1, 1, 3, 3, 2, 2, 2]))

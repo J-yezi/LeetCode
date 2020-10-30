@@ -1,5 +1,3 @@
-#coding=utf-8
-
 '''
 给定一个二叉树，找出其最大深度。
 二叉树的深度为根节点到最远叶子节点的最长路径上的节点数。
@@ -15,11 +13,13 @@
 返回它的最大深度 3 。
 '''
 
+
 class TreeNode:
     def __init__(self, x):
         self.val = x
         self.left = None
         self.right = None
+
 
 class Solution:
     # 递归
@@ -41,6 +41,7 @@ class Solution:
     #             stack.append((root.right, curr_depth + 1))
     #             depth = max(depth, curr_depth)
     #     return depth
+
 
 if __name__ == '__main__':
     root = TreeNode(3)

@@ -1,5 +1,3 @@
-#coding=utf-8
-
 class DLinkedNode(): 
     def __init__(self):
         self.key = 0
@@ -7,64 +5,66 @@ class DLinkedNode():
         self.prev = None
         self.next = None
 
-class LRUCache(object):
-    def __init__(self, capacity):
-        self.cache = {}
-        self.capacity = capacity
-        self.size = 0
+
+class LRUCache:
+
+    def __init__(self, capacity: int):
+        self.cache = dict()
         self.head = DLinkedNode()
         self.tail = DLinkedNode()
-
         self.head.next = self.tail
         self.tail.prev = self.head
+        self.capacity = capacity
+        self.size = 0
 
-    def get(self, key):
-        node = self.cache.get(key)
-        if not node:
+    def get(self, key: int) -> int:
+        if key not in self.cache:
             return -1
-
-        self.__move_to_head__(node)
+        # 如果 key 存在，先通过哈希表定位，再移到头部
+        node = self.cache[key]
+        self.moveToHead(node)
         return node.value
 
-    def put(self, key, value):
-        node = self.cache.get(key)
-        if not node:
-            newNode = DLinkedNode()
-            newNode.key = key
-            newNode.value = value
-
-            self.cache[key] = newNode
-            self.__add_node__(newNode)
-
+    def put(self, key: int, value: int) -> None:
+        if key not in self.cache:
+            # 如果 key 不存在，创建一个新的节点
+            node = DLinkedNode(key, value)
+            # 添加进哈希表
+            self.cache[key] = node
+            # 添加至双向链表的头部
+            self.addToHead(node)
             self.size += 1
             if self.size > self.capacity:
-            tail = self.__pop_tail__()
-            del self.cache[tail.key]
-            self.size -= 1
+                # 如果超出容量，删除双向链表的尾部节点
+                removed = self.removeTail()
+                # 删除哈希表中对应的项
+                self.cache.pop(removed.key)
+                self.size -= 1
         else:
+            # 如果 key 存在，先通过哈希表定位，再修改 value，并移到头部
+            node = self.cache[key]
             node.value = value
-            self.__move_to_head__(node)
+            self.moveToHead(node)
 
-    def __add_node__(self, node):
+    def addToHead(self, node):
         node.prev = self.head
         node.next = self.head.next
         self.head.next.prev = node
         self.head.next = node
-    
-    def __remove_node__(self, node):
-        prev = node.prev
-        new = node.next
-        prev.next = new
-        new.prev = prev
-    
-    def __move_to_head__(self, node):
-        self.__remove_node__(node)
-        self.__add_node__(node)
 
-    def __pop_tail__(self):
-        res = self.tail.prev
-        self.__remove_node__(res)
-        return res
+    def removeNode(self, node):
+        node.prev.next = node.next
+        node.next.prev = node.prev
+
+    def moveToHead(self, node):
+        self.removeNode(node)
+        self.addToHead(node)
+
+    def removeTail(self):
+        node = self.tail.prev
+        self.removeNode(node)
+        return node
+
 
 if __name__ == "__main__":
     cache = LRUCache(2)
