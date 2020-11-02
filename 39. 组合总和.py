@@ -1,5 +1,3 @@
-# coding=utf-8
-
 '''
 给定一个无重复元素的数组 candidates 和一个目标数 target ，找出 candidates 中所有可以使数字和为 target 的组合。
 candidates 中的数字可以无限制重复被选取
@@ -43,7 +41,7 @@ class Solution:
             # 或者使用 path.copy()
             res.append(path[:])
             return
-        
+
         for index in range(begin, size):
             residue = target - candidates[index]
             # “剪枝”操作，不必递归到下一层，并且后面的分支也不必执行
@@ -53,6 +51,7 @@ class Solution:
             # 因为下一层不能比上一层还小，起始索引还从 index 开始
             self.__dfs(candidates, index, size, path, res, residue)
             path.pop()
+
 
 if __name__ == '__main__':
     candidates = [2, 3, 6, 7]

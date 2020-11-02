@@ -1,5 +1,3 @@
-#coding=utf-8
-
 class Solution:
     # 暴力法
     # def isValid(self, s):
@@ -25,10 +23,10 @@ class Solution:
     """
     栈方法
     栈底的index就是匹配完了所有左括号后，又出现一个右括号，这个时候有效括号就断了
-	每次pop掉一个左括号，就可以计算当前有效括号的长度
-	第一个元素是-1，因为当匹配完左括号后，利用当前右括号的index刚好减去-1，就是有效括号的长度
-	为什么会记录右括号的位置，因为在保存这个右括号的位置的时候，当前有效的括号就断了
-	当栈为空的时候，就表示有效括号断了
+    每次pop掉一个左括号，就可以计算当前有效括号的长度
+    第一个元素是-1，因为当匹配完左括号后，利用当前右括号的index刚好减去-1，就是有效括号的长度
+    为什么会记录右括号的位置，因为在保存这个右括号的位置的时候，当前有效的括号就断了
+    当栈为空的时候，就表示有效括号断了
     """
     def longestValidParentheses(self, s):
         max_len = 0
@@ -58,6 +56,7 @@ class Solution:
     #                 stack[i] = stack[i - 1] + 2 + (stack[i - stack[i - 1] - 2] if i - stack[i - 1] >= 2 else 0)
     #             max_len = max(max_len, stack[i])
     #     return max_len
+
 
 if __name__ == "__main__":
     s = Solution()

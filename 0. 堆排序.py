@@ -36,6 +36,7 @@ class Heap:
             self.array[0], self.array[i] = self.array[i], self.array[0]
             self.adjust_heap(0, i)
 
+
 if __name__ == '__main__':
     heap = Heap([6, 1, 2, 7, 9, 3, 4, 5, 10, 8])
     heap.sort()

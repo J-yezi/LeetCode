@@ -4,7 +4,7 @@ class Shell:
 
     def swap(self, i, j):
         self.array[i], self.array[j] = self.array[j], self.array[i]
-    
+
     def sort(self):
         """
         希尔排序的原理例如先划分间隔3来进行排序，然后可以用2进行间隔排序，最后肯定是变成间隔为1，
@@ -22,6 +22,7 @@ class Shell:
                 while self.array[j] > self.array[j + increment] and j >= 0:
                     self.swap(j, j + increment)
                     j -= increment
+
 
 if __name__ == '__main__':
     shell = Shell([4, 1, 7, 3, 8, 5, 9, 2, 6, 0, 123, 22])

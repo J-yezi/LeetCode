@@ -1,5 +1,3 @@
-# coding=utf-8
-
 '''
 实现 pow(x, n) ，即计算 x 的 n 次幂函数。
 
@@ -7,6 +5,7 @@
 输入: 2.00000, 10
 输出: 1024.00000
 '''
+
 
 class Solution:
     """
@@ -44,11 +43,12 @@ class Solution:
             n = -n
         res = 1
         while n > 0:
-            if n & 1 == 1: # n为奇数
+            # n为奇数
+            if n & 1 == 1:
                 res *= x
             x *= x
             n >>= 1
-        return res            
+        return res
 
 
 if __name__ == '__main__':

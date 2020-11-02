@@ -1,5 +1,3 @@
-#coding=utf-8
-
 '''
 给定一个二叉树，判断其是否是一个有效的二叉搜索树。
 假设一个二叉搜索树具有如下特征：
@@ -26,11 +24,13 @@
      根节点的值为 5 ，但是其右子节点值为 4 。
 '''
 
+
 class TreeNode:
     def __init__(self, x):
         self.val = x
         self.left = None
         self.right = None
+
 
 class Solution:
     # def isValidBST(self, root):
@@ -38,16 +38,18 @@ class Solution:
     # """
     # 递归
     #         root
-    #       /      \     
+    #       /      \
     #     node1   node2
-    #             /   \ 
-    #         node3   node4   
+    #             /   \
+    #         node3   node4
     # node3在node2的左边，那么就应该小于传递进来的max，并且大于root，
-    # 而且min就是上一轮中root的val，所以min < node3 < max 
+    # 而且min就是上一轮中root的val，所以min < node3 < max
     # """
     def isValidBSTHandler(self, root, min, max):
-        if root is None: return True
-        if not min < root.val < max: return False
+        if root is None:
+            return True
+        if not min < root.val < max:
+            return False
         return self.isValidBSTHandler(root.left, min, root.val) and self.isValidBSTHandler(root.right, root.val, max)
 
     """
@@ -56,8 +58,8 @@ class Solution:
     def isValidBST(self, root):
         if not root:
             return True
-            
-        stack = [(root, float('-inf'), float('inf')), ] 
+
+        stack = [(root, float('-inf'), float('inf')), ]
         while stack:
             root, lower, upper = stack.pop()
             if not root:
@@ -68,6 +70,7 @@ class Solution:
             stack.append((root.right, val, upper))
             stack.append((root.left, lower, val))
         return True
+
 
 if __name__ == '__main__':
     root = TreeNode(10)

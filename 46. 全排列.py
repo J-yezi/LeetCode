@@ -1,5 +1,3 @@
-#coding=utf-8
-
 '''
 给定一个没有重复数字的序列，返回其所有可能的全排列。
 
@@ -16,12 +14,13 @@
 ]
 '''
 
+
 class Solution:
     def permute(self, nums):
         res = []
         self.perm(res, nums, 0)
         return res
-    
+
     """
     回溯法
     1、依次将第一个和后面的元素进行交换，然后在对后面的n-1进行全排列
@@ -34,11 +33,12 @@ class Solution:
             return
 
         for i in range(begin, len(nums)):
-            #深度优先遍历
+            # 深度优先遍历
             nums[i], nums[begin] = nums[begin], nums[i]
             self.perm(res, nums, begin + 1)
-            #状态重置
+            # 状态重置
             nums[i], nums[begin] = nums[begin], nums[i]
+
 
 if __name__ == '__main__':
     s = Solution()

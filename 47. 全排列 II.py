@@ -1,5 +1,3 @@
-#coding=utf-8
-
 '''
 给定一个可包含重复数字的序列，返回所有不重复的全排列。
 
@@ -13,12 +11,13 @@
 ]
 '''
 
+
 class Solution:
     def permuteUnique(self, nums):
         res = []
         self.perm(res, nums, 0)
         return res
-    
+
     """
     回溯法
     1、依次将第一个和后面的元素进行交换，然后在对后面的n-1进行全排列
@@ -38,6 +37,7 @@ class Solution:
             nums[i], nums[begin] = nums[begin], nums[i]
             self.perm(res, nums, begin + 1)
             nums[i], nums[begin] = nums[begin], nums[i]
+
 
 if __name__ == '__main__':
     s = Solution()

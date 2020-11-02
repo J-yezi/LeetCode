@@ -1,5 +1,3 @@
-#coding=utf-8
-
 '''
 给定一个链表，旋转链表，将链表每个节点向右移动 k 个位置，其中 k 是非负数。
 
@@ -12,10 +10,12 @@
 向右旋转 2 步: 4->5->1->2->3->NULL
 '''
 
+
 class ListNode(object):
     def __init__(self, x):
         self.val = x
         self.next = None
+
 
 class Solution:
     '''
@@ -35,16 +35,15 @@ class Solution:
 
         old_tail.next = head
         k = k % n
-        
+
         new_tail = head
         for i in range(n - k - 1):
             new_tail = new_tail.next
-        
+
         new_head = new_tail.next
         new_tail.next = None
 
         return new_head
-
 
 
 if __name__ == "__main__":
@@ -64,4 +63,3 @@ if __name__ == "__main__":
     while new_head:
         print(new_head.val)
         new_head = new_head.next
-

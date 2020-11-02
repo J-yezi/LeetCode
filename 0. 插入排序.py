@@ -4,7 +4,7 @@ class Insert:
 
     def swap(self, i, j):
         self.array[i], self.array[j] = self.array[j], self.array[i]
-    
+
     def sort(self):
         """
         最好的情况时间复杂度O(n)，最坏的情况时间复杂度是O(n^2)，平均时间复杂度是O(n^2)，空间复杂度是O(1)，使用场景：大部分已经排好序，稳定
@@ -16,6 +16,7 @@ class Insert:
             while self.array[j] > self.array[j + 1] and j >= 0:
                 self.swap(j + 1, j)
                 j -= 1
+
 
 if __name__ == '__main__':
     insert = Insert([4, 1, 7, 3, 8, 5, 9, 2, 6, 0, 123, 22])

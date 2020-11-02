@@ -1,5 +1,3 @@
-#coding=utf-8
-
 '''
 给定一个排序链表，删除所有重复的元素，使得每个元素只出现一次。
 
@@ -8,10 +6,12 @@
 输出: 1->2
 '''
 
+
 class ListNode(object):
     def __init__(self, x):
         self.val = x
         self.next = None
+
 
 class Solution:
     def deleteDuplicates(self, head):
@@ -22,6 +22,7 @@ class Solution:
             else:
                 curr = curr.next
         return head
+
 
 if __name__ == "__main__":
     node1 = ListNode(1)

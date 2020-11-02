@@ -1,10 +1,9 @@
-#coding=utf-8
-
 '''
 给定一个字符串，请你找出其中不含有重复字符的最长子串的长度
 '''
 
 import time
+
 
 class Solution(object):
     # def lengthOfLongestSubstring(self, s):
@@ -14,8 +13,8 @@ class Solution(object):
     #     for i in range(ls):
     #         temp = 0
     #         keys.clear()
-    #         
-	# 	  for j in range(i, ls):
+    #
+    # 	  for j in range(i, ls):
     #         if not s[j] in keys:
     #             keys.add(s[j])
     #             temp += 1
